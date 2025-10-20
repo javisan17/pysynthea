@@ -4,7 +4,7 @@ version = "0.2.0"
 description = "Example OMOP database (Synthea)"
 authors = [
     {name = "Javier Sánchez Mayoral", email = "javisanmayoral@gmail.com"},
-    {name = "Cristina Ruiz-Poved Dominguez", email = ""}
+    {name = "Cristina Ruiz-Poveda Dominguez", email = "cruizpovedadominguez@gmail.com"}
 ]
 readme = "README.md"
 requires-python = ">=3.13"

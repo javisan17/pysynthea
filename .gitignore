@@ -9,7 +9,13 @@ wheels/
 # Virtual environments
 .venv
 
-# Data
-src/pysynthea/data/csv
-src/pysynthea/data/synthea10.duckdb
+# UV files
+uv.lock
+.python-version
 
+# Aclaration files
+*.txt
+
+# Csv data y database
+src/pysynthea/data/csv
+*.duckdb

@@ -3,7 +3,6 @@ from pathlib import Path
 
 ZIP_URL = 'https://github.com/OHDSI/EunomiaDatasets/raw/main/datasets/Synthea27Nj/Synthea27Nj_5.4.zip'
 
-
 #RUTAS
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 SRC_DIR = BASE_DIR / "src"
@@ -12,4 +11,5 @@ DATA_DIR = PYSYNTHEA / "data"
 CSV_DIR = DATA_DIR / "csv"
 
 
-DB_PATH = DATA_DIR /'synthea10.duckdb'
+DB_PATH = DATA_DIR /'synthea_10000.duckdb'
+DB_SMALL_PATH = DATA_DIR /'synthea_small.duckdb'

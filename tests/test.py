@@ -9,13 +9,13 @@ import sqlalchemy as sa
 def main():
 
     # Build db
-    setup_db()
+    #setup_db()
     
     # Connect db
     conn = connect_db()
 
     # Queries
-    cur = conn.execute(sa.text("select  from PERSON"))
+    cur = conn.execute(sa.text("select count(*) from person;"))
     count = cur.fetchone()
     print(count)
 

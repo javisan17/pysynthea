@@ -2,25 +2,58 @@
 
 This project provides a package to work with an **example OMOP database** and run queries and experiments without using real patient data.
 
-## Usage
+## Database and usage
 
-```python
-import pysynthea.build as pb
-import sqlalchemy as sa
+The project already includes a **pre-built DuckDB database** ready to use.  
+This database contains the complete processed data, allowing you to run queries directly without any additional setup.
 
-# Create database
-pb.setup_db()
+In addition, the project provides a **feature to generate a smaller version** of the database.  
+This is useful for testing or if you want to **replace the main database**.
 
-# Connect db
-conn = pb.connect_db()
+### WARNING WITH QUERIES
 
-# Queries
-cur = conn.execute(sa.text("select count(*) from person"))
-cur.fetchone()
+No database creates schemas, index or relationships between tables. **The Atlas queries do not work**. You need to change it.
 
-# Close conexion
-conn.close()
-```
+### Available options
+
+- **Full database**  
+  Already generated and located in the `src/pysynthea/data/` directory.
+
+  ```python
+  import pysynthea.build as pb
+  import sqlalchemy as sa
+
+  # Connect db. You don't need to specify the database
+  conn = pb.connect_db()
+
+  # Queries
+  cur = conn.execute(sa.text("select count(*) from person"))
+  cur.fetchone()
+
+  # Close conexion
+  conn.close()
+  ```
+
+- **Generate a smaller database**
+  You can create a lightweight version by running:
+
+  ```python
+  import pysynthea.build as pb
+  import sqlalchemy as sa
+
+  # Create smaller database
+  pb.setup_db()
+
+  # Connect db
+  conn = pb.connect_db(database="small")
+
+  # Queries
+  cur = conn.execute(sa.text("select count(*) from person"))
+  cur.fetchone()
+
+  # Close conexion
+  conn.close()
+  ```
 
 ## Purpose
 

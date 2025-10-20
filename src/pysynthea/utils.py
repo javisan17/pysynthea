@@ -12,6 +12,15 @@ def get_csv(url, extract_to):
     with zipfile.ZipFile(zip, 'r') as z:
         z.extractall(extract_to)
 
+
+# def extract_csv(zip, extract_to):
+#     """
+#     Extract the content of a zip file into a local folder
+#     """
+
+#     with zipfile.ZipFile(zip, 'r') as z:
+#         z.extractall(extract_to)
+
 def create_tables(dir, engine):
     """
     Read all CSV files in a directory and create tables in a SQLite database.
