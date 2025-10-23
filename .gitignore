@@ -19,3 +19,4 @@ uv.lock
 # Csv data y database
 src/pysynthea/data/csv
 *.duckdb
+synthea_small.duckdb

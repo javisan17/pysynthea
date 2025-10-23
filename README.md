@@ -12,7 +12,9 @@ This is useful for testing or if you want to **replace the main database**.
 
 ### WARNING WITH QUERIES
 
-No database creates schemas, index or relationships between tables. **The Atlas queries do not work**. You need to change it.
+You need to modify the SQL queries because these databases do not use schemas.
+Make sure the SQL syntax is compatible with DuckDB to avoid execution errors.
+**The raw Atlas queries do not work**. You need to modify them.
 
 ### Available options
 

@@ -9,17 +9,19 @@ import sqlalchemy as sa
 def main():
 
     # Build db
-    #setup_db()
+    setup_db()
     
     # Connect db
     conn = connect_db()
 
     # Queries
-    cur = conn.execute(sa.text("select count(*) from person;"))
-    count = cur.fetchone()
-    print(count)
+    cur = conn.execute(sa.text("""select count(*) from person;"""))
+
+    cursor = cur.fetchone()
+    print(cursor)
 
     conn.close()
+
 
 if __name__ == "__main__":
     main()
