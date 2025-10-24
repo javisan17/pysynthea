@@ -2,27 +2,36 @@ from pathlib import Path
 import sqlalchemy as sa
 
 from .consts import *
-from .utils import get_csv, create_tables
+from .utils import *
 
 
-def setup_db():
+def setup_db(database=DB_PATH):
     """
-    Downloading csv files and building a local DuckDB  
+    Set up the local Synthea database depending on the specified type
     """
 
-    if Path(DB_SMALL_PATH).exists():
-        return
+    if database == DB_PATH:
+        if Path(database).exists():
+            return
+        
+        #Bring and download the db
+        get_10k_db(url=DB_URL, output_dir=DATA_DIR , output_path=DB_PATH)
 
-    # Download data
-    get_csv(url=ZIP_URL, extract_to=CSV_DIR)
+    database = DB_SMALL_PATH if database == "small" else database
+    if database == DB_SMALL_PATH:
+        if Path(database).exists():
+            return
 
-    # Build db
-    engine = sa.create_engine(f"duckdb:///{DB_SMALL_PATH}")
+        # Download data
+        get_small_db(url=DB_SMALL_URL, extract_to=CSV_DIR)
 
-    with engine.connect() as conn:
-        with conn.begin():
-            # Create tables
-            create_tables(dir=CSV_DIR, engine=conn)
+        # Build db
+        engine = sa.create_engine(f"duckdb:///{DB_SMALL_PATH}")
+
+        with engine.connect() as conn:
+            with conn.begin():
+                # Create tables
+                create_tables(dir=CSV_DIR, engine=conn)
 
 
 def connect_db(database=DB_PATH):

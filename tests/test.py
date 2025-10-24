@@ -1,3 +1,7 @@
+"""
+TEST de pruebas 1. Montar base de datos pequeña, consultas varias, cohortes... 
+"""
+
 import sys
 from pathlib import Path
 
