@@ -2,7 +2,7 @@ from pathlib import Path
 import sqlalchemy as sa
 
 from .consts import *
-from .utils import *
+from .utils_setup import *
 
 
 def setup_db(database=DB_PATH):
