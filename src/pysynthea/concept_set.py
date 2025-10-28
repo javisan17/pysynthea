@@ -1,14 +1,20 @@
 import pandas as pd
+from itertools import count
 from .utils_concept_set import *
 
 # Returns the desired Concept Set's DataFrame  
     # DataFrame's columns include those from the CONCEPT table and an additional one with the conceptset_id 
     # If descendants are wanted you must specify it when using the function
 
-def get_concept_set(conn, conceptset_id, concept_ids=None, concept_names=None, include_descendants=False):
+conceptset_id_gen = count(1)
+
+def get_concept_set(conn, concept_ids=None, concept_names=None, include_descendants=False):
     """
     Build and return a complete concept set DataFrame by combining concepts from given IDs and/or names, optionally including their descendants.
     """
+
+    # Automatically generate a unique autoincremental ID 
+    conceptset_id = next(conceptset_id_gen)
 
     if concept_ids is None:
         concept_ids = []

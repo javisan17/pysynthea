@@ -18,7 +18,6 @@ def main():
     # Testing function
     df = get_concept_set(
         conn=conn,
-        conceptset_id=1,
         concept_ids=[1032443],          # DEBEN PASAR ARGUMENTOS COMO LISTAS
         concept_names=["Diabetes mellitus"],
         include_descendants=True
@@ -28,6 +27,9 @@ def main():
     print(df.head())
     print(df.columns)
     print(len(df))
+
+
+    conn.close()
 
 
 if __name__ == "__main__":
