@@ -14,7 +14,7 @@ uv.lock
 .python-version
 
 # Aclaration files
-txts/
+docs/
 *.txt
 
 # Csv data y database

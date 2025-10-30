@@ -7,7 +7,7 @@ from pathlib import Path
 
 sys.path.append(str(Path(__file__).resolve().parent.parent / "src"))
 
-from pysynthea.build import setup_db, connect_db
+from pysynthea.build.setup import setup_db, connect_db
 import sqlalchemy as sa
 
 def main():
