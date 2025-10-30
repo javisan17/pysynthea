@@ -9,7 +9,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent / "src"))
 
 from pysynthea.concept_set.concept_set import *
-from pysynthea.build.setup import *
+from pysynthea.setup.setup import *
 
 def main():
     # Connection to synthea_10000
