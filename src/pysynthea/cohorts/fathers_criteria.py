@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Literal, Optional
 import pandas as pd
 
@@ -8,7 +8,7 @@ Clase padre de criterios
 """
 @dataclass
 class Criteria:
-    atributes: list[object]
+    atributes: list[object] = field(default_factory=list)
     def add_attribute(self):
         pass
 
@@ -22,18 +22,17 @@ class Add_Demographic(Criteria):
 
 @dataclass
 class Options(Criteria):
-    how_occurrence: Literal["at least", "exactly", "at most"]
-    amount_occurrence: Literal[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 50, 100]
-    using_occurrence: Literal["using all", "using distinct"]
-    choice_using_distinct: Optional[Literal["Standard Concept", "Start Date"]]
-    time_event: Literal["event starts", "event ends"]
-    time_window_value: Literal["all", 0, 1, 7, 14, 21, 30, 60, 90, 120, 180, 365, 548, 730, 1095]
-    time_window_relation: Literal["before", "after"]
-    reference_window_value: Literal["all", 0, 1, 7, 14, 21, 30, 60, 90, 120, 180, 365, 548, 730, 1095]
-    reference_window_relation: Literal["before", "after"]
-    index_date_point: Literal["index start date", "index end date"]
-    allow_events_from_outside_observation_period: Literal[True, False]
-    having_x_of_the_following_criteria: Literal["all", "any", "at least", "at most"]
+    how_occurrence: Literal["at least", "exactly", "at most"] = "at least"
+    amount_occurrence: Literal[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 50, 100] = 1
+    using_occurrence: Literal["using all", "using distinct"] = "using all"
+    choice_using_distinct: Optional[Literal["Standard Concept", "Start Date"]] = "Standard Concept"
+    time_event: Literal["event starts", "event ends"] = "event starts"
+    time_window_value: Literal["all", 0, 1, 7, 14, 21, 30, 60, 90, 120, 180, 365, 548, 730, 1095] = "all"
+    time_window_relation: Literal["before", "after"] = "before"
+    reference_window_value: Literal["all", 0, 1, 7, 14, 21, 30, 60, 90, 120, 180, 365, 548, 730, 1095] = "all"
+    reference_window_relation: Literal["before", "after"] = "after"
+    index_date_point: Literal["index start date", "index end date"] = "index start date"
+    allow_events_from_outside_observation_period: Literal[True, False] = False
 
     def describe(self):
         if self.using_occurrence == "using all":
@@ -61,11 +60,11 @@ class Options(Criteria):
 
 @dataclass
 class Options_Concept(Options):
-    concept_set: object[pd.DataFrame]
+    concept_set: pd.DataFrame = None
 
 @dataclass
 class Options_Extra(Options):
-    restrict_to_the_same_visit_occurrence: Literal[True, False]
+    restrict_to_the_same_visit_occurrence: Literal[True, False] = False
 
     def describe(self):
         list_desc = super().describe()
@@ -78,8 +77,8 @@ class Options_Extra(Options):
 
 @dataclass
 class Options_Concept_Extra(Options):
-    concept_set: object[pd.DataFrame]
-    restrict_to_the_same_visit_occurrence: Literal[True, False]
+    concept_set: pd.DataFrame = None
+    restrict_to_the_same_visit_occurrence: Literal[True, False] = False
 
     def describe(self):
         list_desc = super().describe()

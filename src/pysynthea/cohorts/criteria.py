@@ -1,9 +1,7 @@
-from dataclasses import dataclass, field
-from typing import Literal, Optional
-import pandas as pd
+from dataclasses import dataclass
 
 from .fathers_criteria import *
-from subgroup_criteria import *
+from .subgroup_criteria import *
 
 
 """
