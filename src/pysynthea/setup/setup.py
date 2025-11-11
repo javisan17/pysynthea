@@ -1,8 +1,11 @@
 from pathlib import Path
 import sqlalchemy as sa
 
-from ..consts import *
-from .utils_setup import *
+from pysynthea.consts import *
+from pysynthea.setup.utils_setup import *
+
+#from ..consts import *
+#from .utils_setup import *
 
 
 def setup_db(database=DB_PATH):

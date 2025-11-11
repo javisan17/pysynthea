@@ -34,7 +34,7 @@ def concepts_by_ids(conn, concept_ids):
     return pd.read_sql(query_ids, conn)
 
 
-def include_ancestors(conn, concept_ids):
+def get_descendants(conn, concept_ids):
     """
     Retrieve all descendant concepts related to the given ancestor concept IDs from the 'concept_ancestor' table.
     """
