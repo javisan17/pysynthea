@@ -8,11 +8,11 @@ from pathlib import Path
 
 sys.path.append(str(Path(__file__).resolve().parent.parent.parent / "src"))
 
-from pysynthea.cohorts.criteria import *
-from pysynthea.cohorts.fathers_criteria import *
-from pysynthea.cohorts.inclusion_criteria import *
-from pysynthea.cohorts.group_criteria import *
-from pysynthea.cohorts.subgroup_criteria import *
+from pysynthea.cohorts.criteria.criteria import *
+from pysynthea.cohorts.criteria.fathers_criteria import *
+from pysynthea.cohorts.criteria.inclusion_criteria import *
+from pysynthea.cohorts.criteria.group_criteria import *
+from pysynthea.cohorts.criteria.subgroup_criteria import *
 
 
 def main():
