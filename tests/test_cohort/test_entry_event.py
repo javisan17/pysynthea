@@ -1,10 +1,27 @@
+"""
+TEST for a cohort Entry Event.
+
+Dependencies
+------------
+cohort_entry_event.py
+entry_criteria.py
+entry_event_type.py
+criteria.py
+subgroup_criteria.py
+inclusion_criteria.py
+setup.py
+
+Notes
+-----
+- Requires the Synthea database to be available locally.
+- Intended as a standalone integration test, not a unit test.
+"""
+
 import sys
 from pathlib import Path
-import pandas as pd
 
 sys.path.append(str(Path(__file__).resolve().parent.parent.parent / "src"))
 
-from pysynthea import concept_set
 from pysynthea.cohorts.entry.cohort_entry_event import *
 from pysynthea.cohorts.entry.entry_criteria import *
 from pysynthea.cohorts.entry.entry_event_type import *

@@ -1,12 +1,75 @@
 from dataclasses import dataclass
-
 from .fathers_criteria import *
 from .subgroup_criteria import *
 from pysynthea.concept_set.concept_set import *
 
 
 """
-Criterias
+Module: criteria
+
+This module contains the different types of criteria. 
+Each one of them is represented by a class that includes an attribute and a method.
+Three types of criteria are defined, Options_Concept, Options_Extra and Options_Concept_Extra. 
+Each one of them specifies their name in the `criteria_name` attribute.
+
+Attributes
+----------
+criteria_name: str
+    specific name of each criterion type.
+
+Methods
+-------
+describe() -> str
+    Returns a human-readable multiline string describing
+    each criterion, including its concept set name.
+
+Dependencies
+------------
+Options_Extra
+    Criteria that include an Options object and a 
+    restrict_to_the_same_visit_occurrence attribute.
+Options_Concept
+    Criteria that include a ConceptSet and an Options concept.
+Options_Concepts_Extra
+    Criteria that include a ConceptSet and an Options object,
+    as well as a restrict_to_the_same_visit_occurrence attribute.
+
+Typical usage
+-------------
+Below are minimal examples of how to instantiate and describe each
+main criterion type: Options_Concept, Options_Extra and Options_Concept_Extra.
+
+
+1. Options_Concept
+    from pysynthea.concept_set.concept_set import ConceptSet
+    from synthea.setup.setup import connect_db()
+    from criteria import Add_Condition_Era
+
+    conn = connect_db()
+    cs = ConceptSet(
+         conn=conn,
+         conceptset_name="Diabetes",
+         concept_ids=[201826],
+         include_descendants=True)
+     cs.build()
+    crit = Add_Condition_Era(concept_set=cs)
+
+2. Options_Extra
+    from criteria import Add_Observation_Period
+    crit = Add_Observation_Period(restrict_to_the_same_visit_occurrence=True)
+
+3. Options_Concept_Extra
+    from pysynthea.concept_set.concept_set import ConceptSet
+    from synthea.setup.setup import connect_db() 
+    from criteria import Add_Drug_Exposure
+    
+    conn = connect_db()
+    antibiotics = ConceptSet(
+         conn=conn,
+         conceptset_name="Antibiotics",
+         concept_names=["Amoxicillin"])
+    antibiotics.build()
+    crit = Add_Drug_Exposure(concept_set=antibiotics)
 """
 @dataclass
 class Add_Condition_Era(Options_Concept):

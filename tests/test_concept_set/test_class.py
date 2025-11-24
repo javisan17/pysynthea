@@ -1,6 +1,24 @@
 
 """
-TEST for ConceptSet class. Making sure correct ConceptSets can be created 
+TEST for the ConceptSet class. 
+It verifies the correct creation of ConceptSets, including:
+    - Connecting to a Synthea DuckDB database.
+    - Creating a ConceptSet with specified concept IDs and concept names.
+    - Optionally including descendant concepts.
+    - Building the final ConceptSet DataFrame.
+    - Printing key information such as ConceptSet ID, name, and number of concepts.
+    - Displaying a preview of the DataFrame and the global ConceptSet registry.
+
+Dependencies
+------------
+concept_class.py
+setup.py
+
+Notes
+-----
+- Requires the Synthea database to be available locally.
+- Uses real OMOP concept IDs as examples (e.g., for Diabetes Mellitus).
+- Intended as a standalone integration test, not a unit test.
 """
 
 import sys
@@ -27,15 +45,15 @@ def main():
     df = cs.build()
 
     # Show results
-    print("\n ConceptSet creado correctamente.")
+    print("\n ConceptSet was created correctly.")
     print(f"ConceptSet ID: {cs.conceptset_id}")
     print(f"ConceptSet Name: {cs.get_name()}")
-    print(f"Número de conceptos: {len(df)}")
-    print("\n--- Vista previa del ConceptSet ---")
+    print(f"Number of concepts: {len(df)}")
+    print("\n--- ConceptSet Preview ---")
     print(df.head(10))
 
     # Show global registry
-    print("\n--- Registro global de ConceptSets ---")
+    print("\n--- ConceptSets Global Registry ---")
     print(conceptset_registry)
 
 

@@ -1,6 +1,22 @@
+"""
+TEST for a cohort Exit Event.
+
+Dependencies
+------------
+concept_class.py
+setup.py
+event_persistence.py
+cohort_exit_event.py
+censoring_events.py
+
+Notes
+-----
+- Requires the Synthea database to be available locally.
+- Intended as a standalone integration test, not a unit test.
+"""
+
 import sys
 from pathlib import Path
-import pandas as pd
 
 sys.path.append(str(Path(__file__).resolve().parent.parent.parent / "src"))
 
