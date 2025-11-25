@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from .fathers_criteria import *
 from .subgroup_criteria import *
-from pysynthea.concept_set.concept_set import *
+from pysynthea.concept_set.concept_class import *
 
 
 """
@@ -47,11 +47,11 @@ main criterion type: Options_Concept, Options_Extra and Options_Concept_Extra.
 
     conn = connect_db()
     cs = ConceptSet(
-         conn=conn,
-         conceptset_name="Diabetes",
-         concept_ids=[201826],
-         include_descendants=True)
-     cs.build()
+        conn=conn,
+        conceptset_name="Diabetes",
+        concept_ids=[201826],
+        include_descendants=True)
+    cs.build()
     crit = Add_Condition_Era(concept_set=cs)
 
 2. Options_Extra
@@ -65,12 +65,13 @@ main criterion type: Options_Concept, Options_Extra and Options_Concept_Extra.
     
     conn = connect_db()
     antibiotics = ConceptSet(
-         conn=conn,
-         conceptset_name="Antibiotics",
-         concept_names=["Amoxicillin"])
+        conn=conn,
+        conceptset_name="Antibiotics",
+        concept_names=["Amoxicillin"])
     antibiotics.build()
     crit = Add_Drug_Exposure(concept_set=antibiotics)
 """
+
 @dataclass
 class Add_Condition_Era(Options_Concept):
     criteria_name : str = "condition era"

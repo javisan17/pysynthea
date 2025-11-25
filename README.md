@@ -70,7 +70,7 @@ These objects mirror the structure of ATLAS Concept Sets and can be attached to 
 
 - **Creating a Concept Set**
 
-```python
+  ```python
   from pysynthea.setup.setup import *
   from pysynthea.concept_set import *
 
@@ -86,7 +86,7 @@ These objects mirror the structure of ATLAS Concept Sets and can be attached to 
 
   # Build the final DataFrame that represents the Concept Set
   df = cs.build()
-```
+  ```
 
 ### Criteria
 
@@ -111,11 +111,11 @@ You can also set whether to consider **all, earliest, or latest events per group
 - **Creating Criteria**
 
   ```python
-    from pysynthea.cohorts.criteria.criteria import *
-    from pysynthea.cohorts.criteria.fathers_criteria import *
-    from pysynthea.cohorts.criteria.inclusion_criteria import *
-    from pysynthea.cohorts.criteria.group_criteria import *
-    from pysynthea.cohorts.criteria.subgroup_criteria import *
+  from pysynthea.cohorts.criteria.criteria import *
+  from pysynthea.cohorts.criteria.fathers_criteria import *
+  from pysynthea.cohorts.criteria.inclusion_criteria import *
+  from pysynthea.cohorts.criteria.group_criteria import *
+  from pysynthea.cohorts.criteria.subgroup_criteria import *
 
   # Criterions (assuming we are reusing the Diabetes ConceptSet and the default parameteres for the Options object)
   opt = Options()
@@ -145,7 +145,7 @@ In this case, several imports from the Criteria class are required.
 
 - **Defining a Cohort Entry Event**
 
-```python
+  ```python
   from pysynthea.setup.setup import *
   from pysynthea.cohorts.entry.cohort_entry_event import *
   from pysynthea.cohorts.entry.entry_criteria import *
@@ -187,7 +187,7 @@ In this case, several imports from the Criteria class are required.
   cohort= CohortEntryEvent(entry_events=[entry1, entry2], entry_criteria=entrycrit)
   # See results
   print(cohort.describe())
-```
+  ```
 
 #### Cohort Exit Events
 
@@ -195,27 +195,28 @@ Exit events define **conditions for leaving a cohort**, such as the end of drug 
 They can also be combined with **event persistence rules** (fixed duration or based on drug exposure) and **censoring events**.
 
 - **Defining a Cohort Exit Event**
-  ```python
-    from pysynthea.setup.setup import *
-    from pysynthea.concept_set.concept_class import*
-    from pysynthea.cohorts.exit.event_persistence import *
-    from pysynthea.cohorts.exit.cohort_exit_event import *
-    from pysynthea.cohorts.exit.censoring_events import *
 
-    # Database connection to build Concept Set.
-    conn = connect_db()
-    # ConceptSets
-    diabetes = ConceptSet(conn=conn, conceptset_name="Diabetes", concept_names=["Diabetes"], include_descendants=True)
-    # CensoringEvents
-    censoring1 = ConditionEraExit(concept_set=diabetes)
-    censoring2 = PayerPlanPeriodExit()
-    # EventPersistence
-    eventPers = FixedDuration(offset_from='start date', offset_days=30)
-    # Cohort definition
-    cohort = CohortExitEvent( event_persistence=eventPers, censoring_events=[censoring1, censoring2])
-    # See results
-    for line in cohort.describe():
-      print(line)
+  ```python
+  from pysynthea.setup.setup import *
+  from pysynthea.concept_set.concept_class import*
+  from pysynthea.cohorts.exit.event_persistence import *
+  from pysynthea.cohorts.exit.cohort_exit_event import *
+  from pysynthea.cohorts.exit.censoring_events import *
+
+  # Database connection to build Concept Set.
+  conn = connect_db()
+  # ConceptSets
+  diabetes = ConceptSet(conn=conn, conceptset_name="Diabetes", concept_names=["Diabetes"], include_descendants=True)
+  # CensoringEvents
+  censoring1 = ConditionEraExit(concept_set=diabetes)
+  censoring2 = PayerPlanPeriodExit()
+  # EventPersistence
+  eventPers = FixedDuration(offset_from='start date', offset_days=30)
+  # Cohort definition
+  cohort = CohortExitEvent( event_persistence=eventPers, censoring_events=[censoring1, censoring2])
+  # See results
+  for line in cohort.describe():
+    print(line)
   ```
 
 ## Testing

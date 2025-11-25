@@ -31,8 +31,8 @@ conceptset = final_conceptset_df(
     conceptset_id=1)
 
 All functions return pandas DataFrames.
-
 """
+
 
 def concepts_by_names(conn, concept_names):
     """
@@ -63,7 +63,6 @@ def concepts_by_names(conn, concept_names):
     return pd.read_sql(query_names, conn)
 
 
-
 def concepts_by_ids(conn, concept_ids):
     """
     Retrieve all concepts from the 'concept' table that match the given list of concept IDs.
@@ -91,7 +90,6 @@ def concepts_by_ids(conn, concept_ids):
         WHERE concept_id IN ({ids_str})
     """
     return pd.read_sql(query_ids, conn)
-
 
 
 def get_descendants(conn, concept_ids):
@@ -124,7 +122,6 @@ def get_descendants(conn, concept_ids):
     return pd.read_sql(query_descendats, conn)
 
 
-
 def final_conceptset_df(name_df, id_df, descendants_df, conceptset_id):
     """
     Combine concept DataFrames, remove duplicates, assign a concept set ID, and return the final unified DataFrame.
@@ -152,11 +149,3 @@ def final_conceptset_df(name_df, id_df, descendants_df, conceptset_id):
     df["conceptset_id"] = conceptset_id
     cols = ["conceptset_id"] + [c for c in df.columns if c != "conceptset_id"]
     return df[cols]
-
-
-# def export_csv(df):
-#     """
-#     df.to_csv('name.csv', index=False)
-#     """
-    
-#     pass

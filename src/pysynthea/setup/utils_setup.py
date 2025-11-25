@@ -58,7 +58,6 @@ def get_10k_db(url, output_dir, output_path):
         If the HTTP request for the URL fails.
     IOError
         If writing to the output file fails.
-
     """
 
     output_dir.mkdir(exist_ok=True)
@@ -96,14 +95,6 @@ def get_small_db(url, extract_to):
     with zipfile.ZipFile(zip, 'r') as z:
         z.extractall(extract_to)
 
-
-# def extract_csv(zip, extract_to):
-#     """
-#     Extract the content of a zip file into a local folder
-#     """
-
-#     with zipfile.ZipFile(zip, 'r') as z:
-#         z.extractall(extract_to)
 
 def create_tables(dir, engine):
     """

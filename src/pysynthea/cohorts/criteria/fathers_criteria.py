@@ -14,7 +14,7 @@ Classes
 Criteria
 Add_Demographic
 Options
-Options_Concept. Options_Extra, Options_Concept_Extra
+Options_Concept, Options_Extra, Options_Concept_Extra
 
 Typical Usage
 -------------
@@ -67,6 +67,7 @@ class Criteria:
         Placeholder for adding extra attributes specific to the subclass.
         To be implemented as needed.
     """
+
     attributes: list[object] = field(default_factory=list)
     
     def describe(self) -> List[str]:
@@ -129,7 +130,7 @@ class Options:
         Specifies which time anchor of the event is used for window evaluation.
         Default is "event starts".
     time_window_value: Literal["all", 0, 1, 7, 14, 21, 30, 60, 90, 120, 180, 365, 548, 730, 1095]
-         First value of the relative time window.
+        First value of the relative time window.
         Default is "all".
     time_window_relation: Literal["before", "after"]
         Specifies how the time window relates to the event.

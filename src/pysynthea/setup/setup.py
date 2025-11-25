@@ -27,7 +27,7 @@ Typical usage
 -------------
 from pathlib import Path
 import sqlalchemy as sa
-from pysynthea.setup import setup_db, connect_db
+from pysynthea.setup.setup import setup_db, connect_db
 
 # Prepare the small Synthea database
 setup_db(database="small")
@@ -37,8 +37,8 @@ conn = connect_db(database="small")
 result = conn.execute("SELECT * FROM patients LIMIT 5")
 for row in result:
     print(row)
-
 """
+
 
 def setup_db(database=DB_PATH):
     """
@@ -63,7 +63,6 @@ def setup_db(database=DB_PATH):
         If downloading the database from the URL fails.
     zipfile.BadZipFile
         If the small database ZIP is invalid.
-
     """
 
     if database == DB_PATH:

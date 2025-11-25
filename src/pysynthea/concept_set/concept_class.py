@@ -89,6 +89,7 @@ class ConceptSet:
     diabetes = cs.build()
     diabetes.get_concept_set_name() # Would return Diabetes Mellitus
     """
+    
     conn: any                              
     conceptset_name: str                   # MUST give ConceptSet name
     concept_ids: Optional[List[int]] = field(default_factory=list) # Must be given in a list, even when only one
@@ -104,7 +105,6 @@ class ConceptSet:
         conceptset_registry.loc[len(conceptset_registry)] = [
             self.conceptset_id, self.conceptset_name
         ]
-
 
     
     def build(self)->pd.DataFrame:
@@ -157,7 +157,6 @@ class ConceptSet:
 
         return self.concepts_df
     
-    
 
     def get_concept_set_name(self) -> str:
         """
@@ -168,4 +167,5 @@ class ConceptSet:
         str
             A string describing the ConceptSet name.
         """
+
         return self.conceptset_name

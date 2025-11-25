@@ -52,7 +52,7 @@ class CohortEntryEvent:
     This class defines the criteria to enter a cohort. It includes:
         - A list of entry events (`entry_events`) that may qualify a person.
         - Entry-level criteria (`entry_criteria`) that constrain or filter
-          which events can be considered valid cohort entry points.
+            which events can be considered valid cohort entry points.
     
     Parameters
     ----------
@@ -68,7 +68,7 @@ class CohortEntryEvent:
         Returns a human-readable description of the entry events and
         the associated entry criteria.
     """
-    entry_events : Optional[List[EntryEvent]] # mirar si poner Optional o no 
+    entry_events : Optional[List[EntryEvent]]
     entry_criteria : EntryCriteria
 
     def describe(self)->List[str]:
