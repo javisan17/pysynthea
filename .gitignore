@@ -17,10 +17,9 @@ uv.lock
 docs/
 *.txt
 
-#Files externos
-src\pysynthea\concept_set\concept_sets_fail
-
 # Csv data y database
 src/pysynthea/data/csv
 *.duckdb
 synthea_small.duckdb
+
+src/pysynthea/plot
