@@ -20,7 +20,7 @@ Notes
 import sys
 from pathlib import Path
 
-sys.path.append(str(Path(__file__).resolve().parent.parent / "src"))
+sys.path.append(str(Path(__file__).resolve().parents[2] / "src"))
 
 from pysynthea.setup.setup import setup_db, connect_db
 import sqlalchemy as sa

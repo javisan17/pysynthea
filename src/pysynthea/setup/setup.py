@@ -9,7 +9,7 @@ Synthea database setup and connection utilities.
 
 This module provides functions to:
 
-    - Download and prepare the full 10K Synthea database ('setup_db').
+    - Download and prepare the full CP Synthea database ('setup_db').
     - Download and extract the smaller Synthea database ('setup_db' with 'small').
     - Build database tables from CSV files for the small database ('create_tables').
     - Connect to a local DuckDB database using SQLAlchemy ('connect_db').
@@ -45,7 +45,7 @@ def setup_db(database=DB_PATH):
     Set up the local Synthea database depending on the specified type.
 
     Depending on the specified 'database' parameter, this function will:
-    - Download the full 10K Synthea database if `database` equals `DB_PATH`.
+    - Download the full CP Synthea database if `database` equals `DB_PATH`.
     - Download and extract the small Synthea database if `database` equals "small".
     - Build the database tables from CSV files for the small database.
 
@@ -70,7 +70,7 @@ def setup_db(database=DB_PATH):
             return
         
         #Bring and download the db
-        get_10k_db(url=DB_URL, output_dir=DATA_DIR , output_path=DB_PATH)
+        get_cp_db(url=DB_URL, output_dir=DATA_DIR , output_path=DB_PATH)
 
     database = DB_SMALL_PATH if database == "small" else database
     if database == DB_SMALL_PATH:

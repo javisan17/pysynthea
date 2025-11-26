@@ -5,7 +5,7 @@ Constants and file paths for the Synthea database setup.
 
 This module defines:
 
-- URLs for downloading the full 10K and small Synthea datasets.
+- URLs for downloading the full CP and small Synthea datasets.
 - Directory paths for storing source code, data, and CSV files.
 - File paths for the DuckDB databases (full and small versions).
 
@@ -15,8 +15,8 @@ from pysynthea.consts import DB_SMALL_URL, DB_PATH, DB_SMALL_PATH
 """
 
 # Direct links to db file:
-# Direct link to the full 10K Synthea database (currently empty, must be filled)
-DB_URL = ''
+# Direct link to the full CP Synthea database
+DB_URL = 'https://zenodo.org/records/17722472/files/synthea_cp.duckdb?download=1'
 # Direct link to the small Synthea database (ZIP file)
 DB_SMALL_URL = 'https://github.com/OHDSI/EunomiaDatasets/raw/main/datasets/Synthea27Nj/Synthea27Nj_5.4.zip'
 
@@ -35,7 +35,7 @@ CSV_DIR = DATA_DIR / "csv"
 
 
 # Database file paths:
-# Full 10K DuckDB database
-DB_PATH = DATA_DIR /'synthea10k.duckdb'
+# Full CP DuckDB database
+DB_PATH = DATA_DIR /'synthea_cp.duckdb'
 # Small DuckDB database
 DB_SMALL_PATH = DATA_DIR /'synthea_small.duckdb'

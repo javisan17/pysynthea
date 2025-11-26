@@ -7,7 +7,7 @@ Utilities to download, extract, and import Synthea databases into a SQL database
 
 This module provides helper functions to:
 
-    - Download the full 10K Synthea database ('get_10k_db') and save it to disk.
+    - Download the full CP Synthea database ('get_cp_db') and save it to disk.
     - Download a smaller Synthea database ZIP file ('get_small_db') and extract its contents.
     - Read CSV files from a directory and create tables in a SQL database ('create_tables').
 
@@ -25,9 +25,9 @@ from pathlib import Path
 from sqlalchemy import create_engine
 
 # Download and extract
-get_10k_db(url="http://example.com/synthea_10k.db", 
+get_cp_db(url="http://example.com/synthea_cp.db", 
     output_dir=Path("data"), 
-    output_path=Path("data/synthea_10k.db"))
+    output_path=Path("data/synthea_cp.db"))
 
 get_small_db(url="http://example.com/synthea_small.zip", 
     extract_to=Path("data/small_db"))
@@ -38,8 +38,8 @@ create_tables(dir=Path("data/small_db"), engine=engine)
 """
 
 
-#10K DATABASE
-def get_10k_db(url, output_dir, output_path):
+#CP DATABASE
+def get_cp_db(url, output_dir, output_path):
     """
     Download the big Synthea database file from a given URL and save it to disk.
 
